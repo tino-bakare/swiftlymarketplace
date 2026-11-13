@@ -1,0 +1,7 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+  path { fill: #151515; }
+  @media (prefers-color-scheme: dark) { path { fill: #ffffff; } }
+</style>
+<path d="M32 7.04C32 3.15192 35.1519 0 39.04 0H56.96C60.8481 0 64 3.15191 64 7.04V25.1902C64 29.0783 60.8481 32.2301 56.96 32.2301H39.04C35.1519 32.2301 32 35.3821 32 39.2701V56.96C32 60.848 28.848 64 24.96 64H7.04C3.152 64 3.8147e-06 60.848 3.8147e-06 56.96V38.8096C3.8147e-06 34.9216 3.152 31.7698 7.04 31.7698H24.96C28.848 31.7698 32 28.6179 32 24.7298V7.04Z" fill-rule="evenodd" clip-rule="evenodd" fill="white"/>
+</svg>

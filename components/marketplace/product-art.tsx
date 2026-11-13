@@ -31,7 +31,7 @@ function Frame({ icons }: { icons: string[] }) {
       <div className="absolute inset-0 flex items-center justify-center gap-[8%]">
         {icons.slice(0, 3).map((name) => {
           const Icon = artIcons[name];
-          return Icon ? <Icon key={name} className="h-auto w-[11%] min-w-7" strokeWidth={1.25} absoluteStrokeWidth /> : null;
+          return Icon ? <Icon key={name} className="h-auto w-[8.25%] min-w-[21px]" strokeWidth={1.25} absoluteStrokeWidth /> : null;
         })}
       </div>
     </>
@@ -51,7 +51,7 @@ function Rings({ icon }: { icon?: string }) {
       </svg>
       {Icon ? (
         <div className="absolute inset-0 flex items-center justify-center">
-          <Icon className="h-auto w-[10%] min-w-7" strokeWidth={1.25} absoluteStrokeWidth />
+          <Icon className="h-auto w-[7.5%] min-w-[21px]" strokeWidth={1.25} absoluteStrokeWidth />
         </div>
       ) : null}
     </>

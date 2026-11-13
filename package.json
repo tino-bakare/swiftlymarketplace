@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.8.0",
     "clsx": "^2.1.1",
     "geist": "^1.4.2",
     "lucide-react": "^1.72.0",

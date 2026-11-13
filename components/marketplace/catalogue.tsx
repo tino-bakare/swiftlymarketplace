@@ -40,7 +40,7 @@ export function Catalogue() {
       <h2 id="products-heading" className="sr-only">Products</h2>
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <Tabs value={filter} onValueChange={choose} variant="pill" className="min-w-0">
+        <Tabs value={filter} onValueChange={choose} variant="segment" className="min-w-0">
           <TabsList aria-label="Filter by category">
             <TabsTrigger value="all">All</TabsTrigger>
             {categories.map((c) => (
@@ -51,7 +51,7 @@ export function Catalogue() {
           </TabsList>
         </Tabs>
 
-        <p className="shrink-0 text-sm text-muted-foreground tabular-nums">
+        <p className="shrink-0 font-mono type-caption-1-regular text-muted-foreground tabular-nums">
           <span aria-hidden="true">
             <AnimatedNumber value={visible.length} duration={0.4} /> of {products.length}
           </span>

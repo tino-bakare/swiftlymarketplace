@@ -140,30 +140,85 @@
    Swiftly brand: the only place brand values live.
    Swap these when the buckstudio identity is ready.
    ------------------------------------------------------------------ */
+/* Colour: light only, modelled on Bland's palette (ink on white, warm
+   paper surfaces, one yellow call to action). */
 :root {
+    --brand-ink: #151515;
+    --brand-paper: #f6f6f1;
+    --brand-stone: #e5e4dc;
+    --brand-sun: #f9a900;
+
+    --background: #ffffff;
+    --foreground: var(--brand-ink);
+    --card: var(--brand-paper);
+    /* Bland uses ink at 60%; 64% keeps small text above 4.5:1 on paper. */
+    --muted-foreground: rgb(21 21 21 / 0.64);
+    --border: rgb(21 21 21 / 0.12);
+    --border-strong: rgb(21 21 21 / 0.2);
+    --primary: var(--brand-ink);
+    --primary-foreground: #ffffff;
+    --accent: var(--brand-sun);
+    --accent-fg: var(--brand-ink);
+    --ring: rgb(21 21 21 / 0.4);
+
+    /* Shape: square controls with rounded corners, not pills. */
+    --radius-control: 6px;
+    /* Every divider line uses this style. */
+    --divider-style: dashed;
+
     --font-sans-brand: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+    --font-serif-brand: var(--font-geist-serif), ui-serif, Georgia, serif;
+    --font-mono-brand: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
     --hero-height: 65svh;
 }
 
 @theme inline {
     --font-sans: var(--font-sans-brand);
+    --font-serif: var(--font-serif-brand);
+    --font-mono: var(--font-mono-brand);
+    --color-sun: var(--brand-sun);
+    --color-stone: var(--brand-stone);
 }
 
-@media (prefers-color-scheme: dark) {
-    :root:not(.light) {
-        --background: #151515;
-        --foreground: oklch(96% 0 0);
-        --card: #1c1c1c;
-        --muted-foreground: oklch(62% 0 0);
-        --border: rgb(255 255 255 / 0.05);
-        --border-strong: rgb(255 255 255 / 0.1);
-        --accent: oklch(80% 0.18 195);
-        --accent-fg: #151515;
-    }
+/* Type scale, after BoardUI's typography playbook: each class is one
+   composite token that sets size, line height, tracking and weight
+   together (type-{style}-{weight}). Colour and family are applied
+   separately. Roles: Geist Serif for headings, Geist Sans for body and
+   UI, Geist Mono for metadata (categories, domains, counts). Named type-*
+   rather than text-* so tailwind-merge never mistakes them for colours.
+   Large Title to Title 2 carry a tight display line height (about
+   1.03 to 1.2) instead of BoardUI's Inter values, because Geist Serif
+   sets them; Title 3 and below keep BoardUI's metrics. */
+@theme {
+    --type-weight-regular: 400;
+    --type-weight-medium: 500;
+    --type-weight-semibold: 600;
+    --type-weight-bold: 700;
+}
+
+@utility type-large-title-* { font-size: 4rem; line-height: 4.125rem; font-weight: --value(--type-weight-*); }
+@utility type-display-1-* { font-size: 3.5rem; line-height: 3.625rem; font-weight: --value(--type-weight-*); }
+@utility type-display-2-* { font-size: 3rem; line-height: 3.25rem; font-weight: --value(--type-weight-*); }
+@utility type-display-3-* { font-size: 2.5rem; line-height: 2.75rem; font-weight: --value(--type-weight-*); }
+@utility type-display-4-* { font-size: 2rem; line-height: 2.25rem; font-weight: --value(--type-weight-*); }
+@utility type-title-1-* { font-size: 1.5rem; line-height: 1.75rem; font-weight: --value(--type-weight-*); }
+@utility type-title-2-* { font-size: 1.25rem; line-height: 1.5rem; font-weight: --value(--type-weight-*); }
+@utility type-title-3-* { font-size: 1.125rem; line-height: 1.5rem; font-weight: --value(--type-weight-*); }
+@utility type-headline-* { font-size: 1rem; line-height: 1.375rem; font-weight: --value(--type-weight-*); }
+@utility type-body-* { font-size: 0.875rem; line-height: 1.25rem; font-weight: --value(--type-weight-*); }
+@utility type-body-2-* { font-size: 0.8125rem; line-height: 1.125rem; font-weight: --value(--type-weight-*); }
+@utility type-caption-1-* { font-size: 0.75rem; line-height: 1rem; letter-spacing: 0.15px; font-weight: --value(--type-weight-*); }
+@utility type-caption-2-* { font-size: 0.6875rem; line-height: 0.9375rem; letter-spacing: 0.2px; font-weight: --value(--type-weight-*); }
+
+/* Dividers: use with border-t / border-b / border-l etc. */
+@utility divider {
+    --tw-border-style: var(--divider-style);
+    border-style: var(--divider-style);
+    border-color: var(--border-strong);
 }
 
 html {
-    color-scheme: light dark;
+    color-scheme: light;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -175,4 +230,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
+    /* beUI's Marquee has no reduced-motion handling of its own. */
+    .animate-marquee, .animate-marquee-vertical { animation: none; }
 }
